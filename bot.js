@@ -36,7 +36,7 @@ client.on("messageCreate", (msg) => {
 let updated = false;
 
  if (!isNaN(text)) {
-   const name = msg.member.displayName;
+   const name = members.find(m => msg.member.displayName.includes(m));
 
    if (items[name] !== undefined) {
      items[name] = parseInt(text);
@@ -44,7 +44,7 @@ let updated = false;
    }
  }
 
- const parts = text.split(" ");
+ const parts = text.split(/\s+/);
 
  if (parts.length === 2 && !isNaN(parts[1])) {
 
